@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const Cliente = new Schema({
+const Usuarios = new Schema({
   name: { type: String, required: true},
   last: { type: String, required: true},
   email: { type: String, required: true },
   password: { type: String, required: true },
-  img: {type: String, required: true},
+  imgProfile: {type: String, required: true},
+  imgCover:{type:String},
   des: {type: String, default: ""},
   genero: {type:String, default:""},
   followers: {type: Array, default:[]},
@@ -15,6 +16,6 @@ const Cliente = new Schema({
   favoritos: {type:Array, default:[]}
 });
 
-const Client = mongoose.model("Cliente", Cliente);
+const User = mongoose.model("Usuarios", Usuarios);
 
-module.exports = Client;
+module.exports = User;

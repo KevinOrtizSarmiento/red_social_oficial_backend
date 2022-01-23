@@ -46,7 +46,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
-app.use("/nota", rutaNota);
+app.use("/nota", Auth, rutaNota);
 app.use("/cliente", Auth, rutaCliente);
 app.use("/comentario", Auth, rutaComentarios);
 app.use("/auth", rutaAuth);

@@ -1,4 +1,4 @@
-const Cliente = require("../models/Client");
+const Cliente = require("../models/Usuarios");
 const Comentarios = require("../models/Comentarios")
 
 module.exports.obtener = async (req, res) => {

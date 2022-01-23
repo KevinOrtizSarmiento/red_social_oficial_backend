@@ -1,5 +1,5 @@
 const Comentario = require("../models/Comentarios");
-const Cliente = require("../models/Client");
+const Cliente = require("../models/Usuarios");
 
 module.exports.crear = async (req, res) => {
   const { publicacionId, autor, info, username, img } = req.body;
