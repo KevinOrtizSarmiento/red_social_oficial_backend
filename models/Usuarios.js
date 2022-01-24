@@ -8,6 +8,7 @@ const Usuarios = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   imgProfile: {type: String, required: true},
+  idPublic:{type:String, default: "example"},
   imgCover:{type:String},
   des: {type: String, default: ""},
   genero: {type:String, default:""},

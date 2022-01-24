@@ -27,12 +27,14 @@ module.exports.login = async (req, res) => {
       res
         .status(200)
         .json({
+          _id:usuario._id,
           name: usuario.name,
           last: usuario.last,
           email: usuario.email,
           imgProfile: usuario.imgProfile,
           imgCover: usuario.imgCover,
           des: usuario.des,
+          idPublic:usuario.idPublic,
           genero: usuario.genero,
           followers: usuario.followers,
           following: usuario.following,
@@ -49,9 +51,8 @@ module.exports.login = async (req, res) => {
   }
 };
 module.exports.register = async (req, res) => {
-  const numero = Math.floor(Math.random() * (820 - 1)) + 1;
   const img =
-    "https://rickandmortyapi.com/api/character/avatar/" + numero + ".jpeg";
+    "https://res.cloudinary.com/academica/image/upload/v1642982779/Images/w3qtkbjgs6lxruvvpjza.png";
   const { name, last, email, password } = req.body;
   const user = await User.findOne({ email: email });
   if (user) return res.json("Este correo ya se encuentra reistrado");
@@ -88,12 +89,14 @@ module.exports.info = async (req, res) => {
       } else {
         let user = await User.findById({ _id: decodeToken.id });
         res.status(200).json({
+          _id:user._id,
           name: user.name,
           last: user.last,
           email: user.email,
           imgProfile: user.imgProfile,
           imgCover: user.imgCover,
           des: user.des,
+          idPublic:user.idPublic,
           genero: user.genero,
           followers: user.followers,
           following: user.following,
