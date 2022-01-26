@@ -13,6 +13,7 @@ dotenv.config();
 const app = express();
 
 var corsOptions = {
+  origin: "https://red-academica.herokuapp.com/",
   optionsSuccessStatus: 200,
   credentials: true,
 };

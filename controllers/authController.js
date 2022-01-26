@@ -28,8 +28,7 @@ module.exports.login = async (req, res) => {
         .status(200)
         .json({
           _id:usuario._id,
-          name: usuario.name,
-          last: usuario.last,
+          names: usuario.names,
           email: usuario.email,
           imgProfile: usuario.imgProfile,
           imgCover: usuario.imgCover,
@@ -60,9 +59,8 @@ module.exports.register = async (req, res) => {
   try {
     const pass_encoded = await bcrypt.hash(password, salt);
     const usuario = await User.create({
-      name,
+      names:name+" "+last,
       imgProfile:img,
-      last,
       email,
       password: pass_encoded,
     });
@@ -90,8 +88,7 @@ module.exports.info = async (req, res) => {
         let user = await User.findById({ _id: decodeToken.id });
         res.status(200).json({
           _id:user._id,
-          name: user.name,
-          last: user.last,
+          names: user.names,
           email: user.email,
           imgProfile: user.imgProfile,
           imgCover: user.imgCover,

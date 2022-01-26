@@ -77,20 +77,12 @@ module.exports.me_fav = async (req, res) => {
 }
 module.exports.update = async (req, res) => {
   const {id} = req.params;
-  const {name, last, des, genero} = req.body;
-  const publicacion = await Nota.updateMany({autor:id}, {$set:{names:name+" "+last}})
-  const comentario = await Comentarios.updateMany({autor:id}, {$set:{username:name+" "+last}})
-  if(des.trim().length>0 && comentario && publicacion){
-    await Cliente.findByIdAndUpdate({_id:id}, {$set:{name:name, last:last, des:des, genero:genero}}).then(response=> {
-      res.json(response);
+  const {names, des} = req.body;
+  if(names.trim().length >0){
+    await Cliente.findByIdAndUpdate({_id:id},{$set:{names:names, des: des}}).then(response=> {
+      res.json(response)
     }).catch(error=> {
-      res.json(error);
-    })
-  }else if(comentario && publicacion){
-    await Cliente.findByIdAndUpdate({_id:id}, {$set:{name:name, last:last,  genero:genero}}).then(response=> {
-      res.json(response);
-    }).catch(error=> {
-      res.json(error);
+      console.log(error)
     })
   }
 }
