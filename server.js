@@ -2,9 +2,8 @@ const express = require("express")
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const rutaAuth = require("./routes/apiLog");
-const rutaNota = require("./routes/apiNota");
+const apiPost = require("./routes/apiPublicacion")
 const rutaCliente = require("./routes/apiCliente")
-const rutaComentarios = require("./routes/apiComentario")
 const { Auth } = require("./middleware/Auth");
 const cookie = require("cookie-parser");
 const cors = require("cors");
@@ -47,9 +46,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
-app.use("/nota", Auth, rutaNota);
+app.use("/nota", Auth, apiPost);
 app.use("/cliente", Auth, rutaCliente);
-app.use("/comentario", Auth, rutaComentarios);
 app.use("/auth", rutaAuth);
 
 
